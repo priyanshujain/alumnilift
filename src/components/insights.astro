@@ -1,0 +1,62 @@
+---
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon/components";
+// @ts-ignore
+
+const insights = [
+  {
+    title: "Browse live research projects",
+    description:
+      "Explore a wide range of research projects from various departments and find the ones that resonate with you.",
+    icon: "fluent:document-bullet-list-20-filled",  
+  },
+  {
+    title: "Connect with researchers",
+    description:
+      "Engage with researchers directly, ask questions, and learn more about their work and impact.",
+    icon: "fluent:people-community-20-filled",
+  },
+  {
+    title: "Receive updates and milestones from projects you back",
+    description:
+      "Stay informed about the progress of the projects you support and see how your contributions are making a difference.",
+    icon: "fluent:calendar-month-20-filled",
+  },
+];
+---
+
+<div class="relative mx-auto max-w-5xl px-6 lg:px-8 mt-60">
+  <div class="mx-auto max-w-2xl lg:text-center">
+    <h2 class="text-base font-semibold leading-7 text-black">For Alumni</h2>
+    <p
+      class="mt-2 text-3xl font-bold tracking-tight text-black"
+      style="font-family: 'Young Serif';">
+      Stay connected. Give back. Make it personal
+    </p>
+    <p class="mt-6 text-lg leading-8 text-gray-900">
+      AlumniLift lets you fund specific research that aligns with your
+      interests, values, or field of study. No intermediaries.
+      Just real impact.
+    </p>
+  </div>
+  <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+    <dl
+      class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+      {
+        insights.map((item) => (
+          <div class="flex flex-col">
+            <div class="mt-1 bg-blue-50 border shadow shadow-blue-100/50 border-blue-100 transition-colors rounded-lg grid place-items-center  p-2 w-10 h-10 shrink-0">
+              <Icon class="text-primary" name={item.icon} />
+            </div>
+            <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-black">
+              {item.title}
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-900">
+              <p class="flex-auto">{item.description}</p>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</div>

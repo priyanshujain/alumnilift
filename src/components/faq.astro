@@ -1,0 +1,83 @@
+---
+const { plan } = Astro.props;
+
+const faqs = [
+	{
+		title: "What is AlumniLift?",
+		description: "A secure, alumni-powered research funding platform built for Harvard faculty and their supporters.",
+	},
+{
+	title: "Is this a crowdfunding platform or a consulting service?",
+	description: "Neither! AlumniLift is independently built by Harvard alumni and offered freely to the university—we’re here to help, not profit.",
+},
+{
+	title: "Who can use AlumniLift?",
+	description: "Harvard faculty, researchers, and verified alumni.",
+},
+{
+	title: "Why not use existing platforms like GoFundMe?",
+	description: "Existing platforms are not designed for research funding and often charge high fees. AlumniLift is built specifically for Harvard faculty and alumni, with a focus on transparency and community.",
+},
+];
+---
+
+<div class="mx-auto max-w-5xl px-6 py-24 sm:py-36 lg:px-8 lg:py-20">
+	<div class="mx-auto divide-y divide-gray-900/10">
+		<h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900"
+		style="font-family: 'Young Serif';"
+		>Frequently Asked Questions</h2>
+		<dl class="mt-10 space-y-6 divide-y divide-gray-900/10">
+			{
+				faqs.map((faq) => (
+					<div class="pt-6" x-data="{ open: false }">
+						<dt>
+							<button
+								type="button"
+								class="flex w-full items-start justify-between text-left text-gray-900"
+								@click="open = !open"
+								:x-bind:aria-expanded="open.toString()">
+								<span class="text-base leading-7">{faq.title}</span>
+								<span class="ml-6 flex h-7 items-center">
+									<svg
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										aria-hidden="true"
+										x-show="!open">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+									</svg>
+									<svg
+										class="h-6 w-6"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										aria-hidden="true"
+										x-show="open">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
+									</svg>
+								</span>
+							</button>
+						</dt>
+						<dd
+							x-transition:enter="transition ease-out duration-100"
+							x-transition:enter-start="opacity-0 transform scale-90"
+							x-transition:enter-end="opacity-100 transform scale-100"
+							x-transition:leave="transition ease-in duration-100"
+							x-transition:leave-start="opacity-100 transform scale-100"
+							x-transition:leave-end="opacity-0 transform scale-90"
+							class="mt-2 pr-12"
+							id="faq-0"
+							x-show="open">
+							<span class="text-base leading-7 text-gray-400">
+								<span set:html={faq.description}></span>
+							</span>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</div>
